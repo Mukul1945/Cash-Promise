@@ -1,0 +1,83 @@
+.headerdiv{
+	background: darkblue;
+	padding-left: 0;
+	opacity: 0.9;
+}
+.headerdiv .col-md-6{
+	padding-left: 0;
+}
+.logodiv{
+	padding-left: 5px;
+}
+.logodiv i{
+	position: absolute;
+	margin-top: 15px;
+	color: white;
+	font-size: 24px;
+	padding: 3px;
+}
+.logodiv img{
+	width: 120px;
+	margin: 10px;
+	margin-left: 35px;
+}
+.centersearch{
+	padding-top: 8px;
+}
+.centersearch input{
+	/*position: absolute;*/
+	background-color: white;
+	padding: 4px;
+	margin-top: 5px;
+	color: black;
+	border: 1px solid grey;
+	width: 90%;
+	/*border-radius: 25px;*/
+}
+.btnsdiv{
+	text-align: right;
+	padding-top: 13px;
+}
+.btnsdiv ul li{
+	display: inline-block;
+	color: white;
+	font-size: 16px;
+	padding: 5px;
+	margin: 2px;
+}
+.btnsdiv ul li a{
+	text-decoration: none;
+	color: white;
+}
+
+.first{
+	background-color: darkblue;
+	text-align: center;
+	color: white;
+	padding: 50px;
+	text-transform: uppercase;
+	font-size: 28px;
+}
+.reward{
+	text-align: center;
+	padding: 35px;
+}
+.reward h3{
+	font-size: 25px;
+}
+.reward img{
+	margin-top: 35px;
+	width: 80%;
+}
+.reward p{
+	margin-top: 25px;
+	font-size: 15px;
+}
+.textdiv{
+	padding-left: 100px;
+	text-align: justify;
+}
+.textdiv p{
+	margin: 8px;
+	color: #666;
+}

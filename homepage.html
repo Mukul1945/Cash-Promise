@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>cashpromise</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/jquery3.js"></script>
+	<script src="js/bootstrap.js"></script>
+</head>
+<body>
+	<nav class="col-md-12 headerdiv navbar-fixed-top">
+		<div class="col-md-6">
+			<div class="col-md-3 logodiv">
+				<span class="nav-brand" id="popmenu" onclick="openmenu()"><i class="fa fa-bars fa-fw"></i></span>
+				<a href="homepage.html">
+				<img src="images/cashbacknew.png">
+				</a>
+			</div>
+			<div class="wrapper">
+			<div class="col-md-8 centersearch search-input" id="search">
+				<input type="text" placeholder="Search For Products" id="input">
+				<!-- <i class="fa fa-search" style="color: black; background-color: white; padding: 7.5px; margin-left: -3px; margin-top: 1px;"></i> -->
+				<div class="autocom-box" style="position: absolute; z-index: 1;">
+                    <li>aksjd</li>
+                    <li>kjbds</li>
+                    <li>asd</li>
+                    <li>sjdbh</li>
+                    <li>kjbsd</li>
+                </div>
+			</div>
+		</div>
+		</div>
+		<div class="col-md-6 btnsdiv">
+			<ul>
+				<li><a href="howitworks.html">How it Works</a></li>
+				<li><a href="signin.html">Sign In</a></li>
+				<li><a href="">Join Free</a></li>
+				<li><a href="cart.html"><i class="fa fa-shopping-cart" style="font-size:21px;"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="clearfix"></div>
+	<div class="col-md-12 bannerdiv">
+		<p><strong>LATEST OFFERS</strong></p>
+		<div class="col-md-4 bannerimg">
+			<img src="images/milanoologo.jpg">
+		</div>
+		<div class="col-md-4 bannerimg">
+			<img src="images/ArchiesBeautyBanner.webp">
+		</div>
+		<div class="col-md-4 bannerimg">
+			<img src="images/manyavarbanner.jpg">
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="col-md-12 top">
+		<p>PRODUCTS WE HAVE</p>
+	</div>
+	<div id="cards"></div>
+
+	<script>
+        let allproducts = []
+
+        const products = fetch("https://dummyjson.com/products")
+        .then(response => response.json())
+
+        var result;
+        products
+        .then(x => {
+            console.log('the promise has settled', x)
+            result = x.products;
+            allproducts = x.products
+            const cards = document.getElementById("cards");
+            result.map(p=>{
+                const div = document.createElement("div");
+                div.innerHTML = `
+                <div class="card col-md-4" >
+                <div class="box">
+                <img class="image" src="${p.images[0]}" ></img>
+                <h1 class="title" >${p.title}</h1>
+                <p  class="category">${p.category}</p>
+                <p class="price" style="font-weight: bold; font-size: 18px;">$ ${p.price}</p>
+                <div class="cart">
+                <p onclick="handle(${p.id})"> Add To Cart</p>
+                </div>
+                </div>
+                </div>
+                `;
+                cards.appendChild(div);
+            })
+            // console.log(result[0],result[1]);
+        })
+        .catch(console.error)
+
+        const searchInput = document.querySelector(".bar");
+        searchInput.addEventListener("keydown",e=>{
+            const value = e.target.value;
+            console.log(value);
+            const titles = allproducts.map(p=>p.title.toLowerCase().includes(value.toLowerCase())?p.title:null).filter(p=>p)
+            console.log(titles);
+            titles.forEach(fun);
+            function fun(e){
+                const t = e.includes(value);
+
+                titles.map(p=>{
+                    const d = document.createElement("div");
+                    const ul = document.createElement("ul");
+                    ul.id = 'items';
+                    ul.style.position = 'fixed';
+                    ul.style.left = '200px';
+                    ul.style.top = '50px';
+                    if(t){
+                        ul.innerHTML = `
+                        <li>${p}</li>.
+                        `
+                        document.getElementsByTagName('body')[0].appendChild(ul);
+                    }    
+                
+                })
+            }
+        })    
+
+        function handle(a){
+        	console.log(a);
+        	// if(localStorage.getItem(a)){
+        		localStorage.clear();
+        	// }else{
+        		localStorage.setItem(a,1);
+        	// }
+        }      
+    </script>
+
+    <script type="text/javascript" src="js/suggestions.js"></script>
+
+    <script type="text/javascript" src="js/script.js"></script>
+
+	<div class="clearfix"></div>
+
+	<div class="col-md-12 footer">
+		<div class="container">
+		<div class="col-md-3">
+			<p>Links</p>
+			<br>
+			<i class="fa fa-angle-right" aria-hidden="true"></i><span>About Us</span>
+			<br>
+			<i class="fa fa-angle-right" aria-hidden="true"></i><span>How it Works</span>
+			<br>
+			<i class="fa fa-angle-right" aria-hidden="true"></i><span>Refer & Earn</span>
+		</div>
+		<div class="col-md-3">
+			<p>Useful Reads</p>
+			<br>
+			<i class="fa fa-angle-right" aria-hidden="true"></i><span>Privacy and Policy</span>
+			<br>
+			<i class="fa fa-angle-right" aria-hidden="true"></i><span>Terms and Conditions</span>
+		</div>
+		<div class="col-md-3">
+			<p>Connect with Us</p>
+			<ul>
+			
+			<li><a href="" target="_blank"><i class="fa fa-facebook fa-fw"></i> Facebook</a></li>
+			<li><a href="" target="_blank"><i class="fa fa-instagram fa-fw"></i> Instagram</a></li>
+			<li><a href="" target="_blank"><i class="fa fa-pinterest-p fa-fw"></i> Pinterest</a></li>
+			<li><a href="" target="_blank"><i class="fa fa-twitter fa-fw"></i> Twitter</a></li>
+			<li><a href="" target="_blank"><i class="fa fa-youtube-play fa-fw"></i> Youtube</a></li>
+			<li><a href="" target="_blank"><i class="fa fa-rss fa-fw"></i> Blog</a></li>
+			<li><a href=""><i class="fa fa-envelope fa-fw"></i> cashpromise.in@gmail.com</a></li>
+		</ul>
+		</div>
+		<div class="col-md-3 lastdiv">
+			<img src="images/cashbacknew.png">
+			<p>Download App</p>
+			<p class="appleimg"><a href="https://apps.apple.com/us/app/cashpromise/id1601621938" target="_blank"><img src="images/iphone-app.png" width="120" alt="cashpromise app"></a></p>
+	
+		</div>
+		</div>
+	</div>
+
+
+	<div class="col-md-3 navbar-fixed-top pop-menu block" id="pop-menu">
+		<span>CATEGORY</span> <span class="text-right" onclick="closemenu()" style="margin-left: 150px;"><i class="fa fa-times fa-lg"></i></span>
+		<div class="clearfix"></div>
+		<ul class="nav">
+			<li><a href="homepage.html">Home</a></li>
+			<li><a href="">All Products</a></li>
+			<li><a href="">All Brands</a></li>
+			<li>
+				<a href="#">All Categories</a>
+					<ul class="">
+					<li>
+						<a href="">
+							<i class="fa fa-angle-right fa-fw"></i> Fashion
+						</a>
+					</li>
+					<li>
+						<a href=""><i class="fa fa-angle-right fa-fw"></i> Beauty &amp; Personal Care
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<i class="fa fa-angle-right fa-fw"></i> Departmental
+						</a>
+					</li>
+					<li>
+						<a href=""><i class="fa fa-angle-right fa-fw"></i> Electronics
+						</a>
+					</li>
+					<li>
+						<a href=""><i class="fa fa-angle-right fa-fw"></i> Grocery
+						</a>
+					</li>
+					<li>
+						<a href=""><i class="fa fa-angle-right fa-fw"></i> Food Delivery
+						</a>
+					</li>
+					<li>
+						<a href=""><i class="fa fa-angle-right fa-fw"></i> Home &amp; Kitchen
+						</a>
+					</li>
+					<li>
+						<a href=""><i class="fa fa-angle-right fa-fw"></i> Demat &amp; Hosting
+						</a>
+					</li>
+					<li>
+						<a href=""><i class="fa fa-angle-right fa-fw"></i> Medicine
+						</a>
+					</li>
+					<li>
+						<a href=""><i class="fa fa-angle-right fa-fw"></i> Travel
+						</a>
+					</li>
+					</ul>	
+			</li>
+		</ul>
+	</div>
+	
+	<script>
+		// function openmenu(){
+		// document.getElementById("pop-menu").style.display = "block";
+		// }
+		
+		// function closemenu(){
+		// document.getElementById("pop-menu").style.display = "none";
+		// }
+		$(document).ready(function(){
+				$("#popmenu").click(function(){
+					$("#pop-menu").css("display","block");
+				});
+		});
+		
+		$(document).ready(function(){
+				$("#pop-menu").click(function(){
+					$("#pop-menu").css("display","none");
+				});
+		});
+
+	</script>
+</body>
+</html>

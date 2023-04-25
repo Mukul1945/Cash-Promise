@@ -1,0 +1,27 @@
+.pop-menu ul li{
+    display: block;
+    margin-top: 8px;
+}
+.pop-menu a{
+    text-decoration: none;
+    color: black;
+}
+.pop-menu {
+    height: 100%;
+    background: #fff;
+    color: #333;
+    background-color: darkred;
+    z-index: 100000;
+    padding: 15px;
+    padding-left: 30px;
+    font-family: 'OpenSans-Regular';
+}
+.navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+}
+.navbar-fixed-top, .navbar-fixed-bottom {
+    position: fixed;
+    right: 0;
+    left: 0;
+}

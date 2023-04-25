@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cart</title>
+	<link rel="stylesheet" type="text/css" href="css/style1.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+</head>
+<body>
+	<nav class="col-md-12 headerdiv">
+		<div class="col-md-6">
+			<div class="col-md-3 logodiv">
+				<span class="nav-brand" id="popmenu" onclick="openmenu()"><i class="fa fa-bars fa-fw"></i></span>
+				<a href="homepage.html">
+				<img src="images/cashbacknew.png">
+				</a>
+			</div>
+			<div class="wrapper">
+			<div class="col-md-8 centersearch search-input" id="search">
+				<input type="text" placeholder="Search For Offers" id="input">
+				<!-- <i class="fa fa-search" style="color: black; background-color: white; padding: 7.5px; margin-left: -3px; margin-top: 1px;"></i> -->
+				
+			</div>
+		</div>
+		</div>
+		<div class="col-md-6 btnsdiv">
+			<ul>
+				<li><a href="howitworks.html">How it Works</a></li>
+				<li><a href="signin.html">Sign In</a></li>
+				<li><a href="">Join Free</a></li>
+				<li><a href="cart.html"><i class="fa fa-shopping-cart" style="font-size:21px;"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="clearfix"></div>
+	<div class="col-md-12 shopdiv">
+		<p>Shopping Cart</p>
+	</div>
+	<div class="clearfix"></div>
+	<div class="col-md-12 maindiv">
+		<div class="container">
+			<div class="col-md-8 box">
+				<div class="col-md-2">
+					<img src="images/facewash.jpg" id="img">
+				</div>
+				<div class="col-md-10 boxtext">
+					<span id="title1"></span>
+					<br>
+					<span>Price:  &#36; <span id="price"></span></span>
+					<br>
+					<span>Quantity</span>
+					<button onclick="minus()"><strong>-</strong></button>
+					<input type="text" id="qty" value="1">
+					<button onclick="plus()"><strong>+</strong></button>
+					<br>
+					<i class="fa fa-trash fa-fw" style="color: darkred;"></i>
+					<span style="color: 
+					darkred;">Remove</span>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="box">
+					<span >Amount:  &#36;</span>
+					<input type="text" id="amt" >
+					<br>
+					<span style="color: darkred;">Delivery Charges:  &#36; 50</span>
+					<hr>
+					<span>Total:  &#36;</span><input type="text" id="ttl">
+					<p style="text-align: center;"><a href="checkout.html" style="width: 100%; background-color: darkblue; padding: 8px; margin-top: 15px; color: white; border-radius: 5px;">Checkout</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+
+	<div class=""></div>
+
+	<div class="col-md-12 footer">
+		<div class="container">
+		<div class="col-md-3">
+			<p>Links</p>
+			<br>
+			<i class="fa fa-angle-right" aria-hidden="true"></i><span>About Us</span>
+			<br>
+			<i class="fa fa-angle-right" aria-hidden="true"></i><span>How it Works</span>
+			<br>
+			<i class="fa fa-angle-right" aria-hidden="true"></i><span>Refer & Earn</span>
+		</div>
+		<div class="col-md-3">
+			<p>Useful Reads</p>
+			<br>
+			<i class="fa fa-angle-right" aria-hidden="true"></i><span>Privacy and Policy</span>
+			<br>
+			<i class="fa fa-angle-right" aria-hidden="true"></i><span>Terms and Conditions</span>
+		</div>
+		<div class="col-md-3">
+			<p>Connect with Us</p>
+			<ul>
+			
+			<li><a href="" target="_blank"><i class="fa fa-facebook fa-fw"></i> Facebook</a></li>
+			<li><a href="" target="_blank"><i class="fa fa-instagram fa-fw"></i> Instagram</a></li>
+			<li><a href="" target="_blank"><i class="fa fa-pinterest-p fa-fw"></i> Pinterest</a></li>
+			<li><a href="" target="_blank"><i class="fa fa-twitter fa-fw"></i> Twitter</a></li>
+			<li><a href="" target="_blank"><i class="fa fa-youtube-play fa-fw"></i> Youtube</a></li>
+			<li><a href="" target="_blank"><i class="fa fa-rss fa-fw"></i> Blog</a></li>
+			<li><a href=""><i class="fa fa-envelope fa-fw"></i> cashpromise.in@gmail.com</a></li>
+		</ul>
+		</div>
+		<div class="col-md-3 lastdiv">
+			<img src="images/cashbacknew.png" width="100%">
+			<p>Download App</p>
+			<p class="appleimg"><a href="https://apps.apple.com/us/app/cashpromise/id1601621938" target="_blank"><img src="images/iphone-app.png" width="120" alt="cashpromise app"></a></p>
+	
+		</div>
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+		var a,b,c;
+		function plus(){
+			var a = parseFloat(document.getElementById("qty").value);
+			if(a<=9)
+			{
+			a++;
+		    }
+			document.getElementById("qty").value = a;
+			var b = parseFloat(document.getElementById("price").innerHTML);
+			c = b*a;
+			document.getElementById("amt").value = c;
+			document.getElementById("ttl").value = c+50;
+		}
+		function minus(){
+			var a= parseFloat(document.getElementById("qty").value);
+			if(a>1)
+			{
+			a--;
+	     	}
+			document.getElementById("qty").value = a;
+			var b = parseFloat(document.getElementById("price").innerHTML);
+			c = b*a;
+			document.getElementById("amt").value = c;
+			document.getElementById("ttl").value = c+50;
+		}
+
+		/*--------------------------------------------------*/
+
+		window.onscroll = function(){
+
+				if(document.body.scrollTop>100 || document.documentElement.scrollTop>00)
+				{
+					document.getElementById("menu").classList.add("navbar-fixed-top");
+				}
+				else
+				{
+					document.getElementById("menu").classList.remove("navbar-fixed-top");
+				}
+		};
+		
+	</script>
+
+	<script type="text/javascript">
+
+		let contentTitle = [];
+
+		async function getResponse(){
+			const response = await fetch(
+				"https://dummyjson.com/products",
+				{
+					method: 'GET'
+				}
+			);
+			if(!response.ok){
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+			const data = await response.json();
+			contentTitle = data.products;
+			console.log(contentTitle[0].title);
+
+			var counter = 0;
+			
+			let key = localStorage.key(0);
+			let val = localStorage.getItem(key);
+			counter = Number(counter) + parseInt(val);
+
+			document.getElementById('title1').innerText = contentTitle[key-1].title;
+			document.getElementById('price').innerText = contentTitle[key-1].price;
+			document.getElementById('amt').value = contentTitle[key-1].price;
+			document.getElementById('ttl').value = contentTitle[key-1].price + 50;
+			document.getElementById('img').src = contentTitle[key-1].thumbnail;
+
+		}
+		getResponse();
+	</script>
+</body>
+</html>
